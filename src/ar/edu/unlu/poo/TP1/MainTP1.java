@@ -1,15 +1,10 @@
 package ar.edu.unlu.poo.TP1;
 
-import ar.edu.unlu.poo.TP1.EJ1.*;
-
 import java.util.Scanner;
 
 public class MainTP1 {
 
     public static void main(String[] args){
-        System.out.println("");
-        System.out.println("sd");
-        Nodo nodo = new Nodo();
         Scanner sc = new Scanner(System.in);
         String opcion = "";
         while (!opcion.equals("0")){
