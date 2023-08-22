@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class MainTP1 {
 
     public static void main(String[] args){
+        System.out.println("sdsdsdsd");
         Nodo nodo = new Nodo();
         Scanner sc = new Scanner(System.in);
         String opcion = "";
