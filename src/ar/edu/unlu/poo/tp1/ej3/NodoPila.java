@@ -1,8 +1,8 @@
-package ar.edu.unlu.poo.TP1.EJ1;
+package ar.edu.unlu.poo.tp1.ej3;
 
-public class Nodo {
+public class NodoPila {
     private Object dato;
-    private Nodo proximo = null;
+    private NodoPila proximo = null;
 
     public void setDato(Object dato){
         this.dato = dato;
@@ -12,11 +12,12 @@ public class Nodo {
         return dato;
     }
 
-    public void setProximo(Nodo nodo){
+    public void setProximo(NodoPila nodo){
         this.proximo = nodo;
     }
 
-    public Nodo getProximo(){
+    public NodoPila getProximo(){
         return proximo;
     }
+
 }
