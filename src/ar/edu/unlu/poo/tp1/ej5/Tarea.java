@@ -1,5 +1,6 @@
 package ar.edu.unlu.poo.tp1.ej5;
 
+import ar.edu.unlu.poo.tp1.ej12y13.Colaborador;
 import ar.edu.unlu.poo.tp1.ej9.FechaUtilidad;
 
 import java.time.LocalDate;
@@ -11,6 +12,8 @@ public class Tarea {
     private LocalDate fechaLimite;
     private LocalDate fechaRecordatorio;
     private final LocalDate FECHA_HOY = LocalDate.now();
+    private LocalDate fechaFinalizacion = null;
+    private Colaborador colaborador = null;
 
     public Tarea(String descripcion, LocalDate fecha, Estado estado, Prioridad prioridad, LocalDate fechaRecordatorio) {
         setDescripcion(descripcion);
@@ -74,9 +77,11 @@ public class Tarea {
         return porVencer;
     }
 
-    public void completar(){
+    public void completar(Colaborador colaborador){
         if (estado == Estado.INCOMPLETA){
-            setEstado(Estado.COMPLETA);;
+            setEstado(Estado.COMPLETA);
+            setFechaFinalizacion(LocalDate.now());
+            setColaborador(colaborador);
         }
     }
 
@@ -129,8 +134,25 @@ public class Tarea {
     public LocalDate getFechaRecordatorio() {
         return this.fechaRecordatorio;
     }
+
     public void setFechaRecordatorio(LocalDate fechaRecordatorio) { // si cambio la fecha de recordatorio puede ser que ahora mi tarea este por vencer (y por lo tanto tambien tengo q cambiar la prioridad)
         this.fechaRecordatorio = fechaRecordatorio;
         setPrioridad(this.prioridad);
+    }
+
+    public LocalDate getFechaFinalizacion() {
+        return this.fechaFinalizacion;
+    }
+
+    private void setFechaFinalizacion(LocalDate fecha){
+        this.fechaFinalizacion = fecha;
+    }
+
+    public Colaborador getColaborador() {
+        return colaborador;
+    }
+
+    private void setColaborador(Colaborador colaborador) {
+        this.colaborador = colaborador;
     }
 }

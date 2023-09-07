@@ -1,4 +1,4 @@
-package ar.edu.unlu.poo.tp1.ej12;
+package ar.edu.unlu.poo.tp1.ej12y13;
 
 import ar.edu.unlu.poo.tp1.ej5.Estado;
 import ar.edu.unlu.poo.tp1.ej5.Prioridad;
@@ -8,7 +8,7 @@ import ar.edu.unlu.poo.tp1.ej9.FechaUtilidad;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class MainEj12 {
+public class MainEj12y13 {
     public static void main(String[] args) {
         AdminstradorTareas adm = new AdminstradorTareas();
 
@@ -51,11 +51,28 @@ public class MainEj12 {
         }
         System.out.println("\n///////////////////////////////////////////////////////////////////////////////////////////////////\n");
 
-        adm.completarTarea("ir a la universidad");
-        adm.completarTarea("programar");
-        adm.completarTarea("Cocinar");
+        Colaborador c1 = new Colaborador("Carlos","Fernandez","24284036");
+        Colaborador c2 = new Colaborador("Javier","Garcia","18388244");
+        Colaborador c3 = new Colaborador("Pedro","Ramirez","31237965");
+
+        adm.completarTarea("ir a la universidad",c1);
+        adm.completarTarea("programar",c2);
+        adm.completarTarea("Cantar",c2);
+        adm.completarTarea("Pasear al perro",c1);
+        adm.completarTarea("Cocinar",c1);
+        adm.completarTarea("Hacer ejercicio",c3);
         for (int i = 0; i < listado.size(); i++){
-            System.out.println(listado.get(i).mostrarTarea() + " - " + listado.get(i).getPrioridad() + " - " + listado.get(i).getFechaLimite() );
+            System.out.println(listado.get(i).mostrarTarea() + " - " + listado.get(i).getPrioridad() + " - " + listado.get(i).getFechaLimite());
         }
+
+        System.out.println("\n///////////////////////////////////////////////////////////////////////////////////////////////////\n");
+        ArrayList<Tarea> listaColaborador = adm.devolverListadoPorColaborador(c1);
+        if (listaColaborador != null) {
+            System.out.println("La lista de tareas finalizadas por el colaborador '" + c1.getNombre() + " " + c1.getApellido() + "' fueron las siguientes: ");
+            for (int i = 0; i < listaColaborador.size(); i++) {
+                System.out.println(listaColaborador.get(i).mostrarTarea() + " - " + listaColaborador.get(i).getPrioridad() + " - " + listaColaborador.get(i).getFechaLimite());
+            }
+        }
+
     }
 }

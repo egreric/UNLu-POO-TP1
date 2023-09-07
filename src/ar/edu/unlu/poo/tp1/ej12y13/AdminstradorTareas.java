@@ -1,4 +1,4 @@
-package ar.edu.unlu.poo.tp1.ej12;
+package ar.edu.unlu.poo.tp1.ej12y13;
 
 import ar.edu.unlu.poo.tp1.ej5.Estado;
 import ar.edu.unlu.poo.tp1.ej5.Prioridad;
@@ -26,6 +26,18 @@ public class AdminstradorTareas {
         return listaTareas;
     }
 
+    public ArrayList<Tarea> devolverListadoPorColaborador(Colaborador colaborador){
+        ArrayList<Tarea> lista = new ArrayList<Tarea>();
+        for (Tarea t: listaTareas){
+            if (t.getColaborador() != null) {
+                if (t.getColaborador().getDni().equalsIgnoreCase(colaborador.getDni())) {
+                    lista.add(t);
+                }
+            }
+        }
+        return lista;
+    }
+
     public Tarea buscarPorTitulo(String titulo){
         for (Tarea t :listaTareas){
             if (t.getDescripcion().equalsIgnoreCase(titulo)){
@@ -35,10 +47,10 @@ public class AdminstradorTareas {
         return null;
     }
 
-    public void completarTarea(String titulo){
+    public void completarTarea(String titulo, Colaborador colaborador){
         Tarea t = buscarPorTitulo(titulo);
         if (t != null){
-            t.completar();
+            t.completar(colaborador);
         }
     }
 
