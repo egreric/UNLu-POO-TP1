@@ -1,5 +1,7 @@
 package ar.edu.unlu.poo.tp1.ej5;
 
+import ar.edu.unlu.poo.tp1.ej9.FechaUtilidad;
+
 import java.time.LocalDate;
 
 public class Tarea {
@@ -8,6 +10,7 @@ public class Tarea {
     private Estado estado;
     private LocalDate fechaLimite;
     private LocalDate fechaRecordatorio;
+    private final LocalDate FECHA_HOY = LocalDate.now();
 
     public Tarea(String descripcion, LocalDate fecha, Estado estado, Prioridad prioridad, LocalDate fechaRecordatorio) {
         setDescripcion(descripcion);
@@ -55,8 +58,8 @@ public class Tarea {
 
     public boolean estaVencida(){
         boolean vencida = false;
-        if (fechaLimite != null && !estaCompleta()) {
-            if (this.fechaLimite.isBefore(LocalDate.now())) { // comparo si se paso de la fecha de vencimiento y esta completa
+        if (fechaLimite != null && !estaCompleta()) {   // me fijo antes si la tarea esta completa (y no es nula)
+            if (FechaUtilidad.esMenor(fechaLimite,FECHA_HOY)); { // comparo si mi fecha limite es menor a la fecha de hoy
                 vencida = true;
             }
         }
@@ -66,7 +69,7 @@ public class Tarea {
     public boolean estaPorVencer(){
         boolean porVencer = false;
         if (fechaRecordatorio != null && fechaLimite != null && !estaCompleta() && !estaVencida()) {
-            porVencer = (fechaRecordatorio.isEqual(LocalDate.now()) || fechaRecordatorio.isAfter(LocalDate.now()));
+            porVencer = (fechaRecordatorio.isEqual(FECHA_HOY) || FechaUtilidad.esMayor(fechaRecordatorio,FECHA_HOY));
         }
         return porVencer;
     }

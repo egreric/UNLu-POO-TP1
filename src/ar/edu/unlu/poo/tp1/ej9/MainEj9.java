@@ -1,19 +1,20 @@
 package ar.edu.unlu.poo.tp1.ej9;
 
 
+import java.time.LocalDate;
+
 public class MainEj9 {
     public static void main(String[] args){
-        Fecha fecha = new Fecha("27-08-1994");
+        LocalDate fecha1 = FechaUtilidad.getFechaDesdeString("31-05-2023",FechaUtilidad.FORMATO1);
+        LocalDate fecha2 = FechaUtilidad.getFechaDesdeString("07-29-2023",FechaUtilidad.FORMATO2);
 
-        System.out.println(fecha.toString());
-        System.out.println(fecha.getFecha());
 
-        System.out.println(fecha.esMenor("28-08-1994"));
-        System.out.println(fecha.esMenor("20-07-1994"));
-        System.out.println(fecha.esMayor("05-02-1991"));
-        System.out.println(fecha.esMayor("25-05-1995"));
-        System.out.println(fecha.estaEntre("17-08-1985","27-08-2006"));
-        System.out.println(fecha.estaEntre("17-08-1998","27-08-2006"));
+        System.out.println("El " + fecha1 + " es Mayor que el " + fecha2 + "? : " + FechaUtilidad.esMayor(fecha1,fecha2));
+        System.out.println("El " + fecha1 + " es Menor que el " + fecha2 + "? : " + FechaUtilidad.esMenor(fecha1,fecha2));
+
+        LocalDate fecha3 = FechaUtilidad.getFechaDesdeString("25-06-2023","dd-MM-yyyy");
+        System.out.println("El " + fecha3 + " esta entre el " + fecha1 + " y el: " + fecha2 + "?: " + FechaUtilidad.estaEntre(fecha3,fecha1,fecha2));
+        System.out.println("El " + fecha3 + " esta entre el " + fecha2 + " y el: " + fecha1 + "?: " + FechaUtilidad.estaEntre(fecha3,fecha2,fecha1));
 
 
     }

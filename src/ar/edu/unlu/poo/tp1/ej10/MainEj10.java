@@ -3,15 +3,16 @@ package ar.edu.unlu.poo.tp1.ej10;
 import ar.edu.unlu.poo.tp1.ej5.Estado;
 import ar.edu.unlu.poo.tp1.ej5.Prioridad;
 import ar.edu.unlu.poo.tp1.ej5.Tarea;
-import ar.edu.unlu.poo.tp1.ej9.Fecha;
+import ar.edu.unlu.poo.tp1.ej9.FechaUtilidad;
+
+import java.time.LocalDate;
 
 public class MainEj10 {
     public static void main(String[] args){
 
-
-        Fecha fechaLimite = new Fecha("31-10-2022");
-        Fecha fechaRecordatorio = new Fecha("30-09-2021");
-        Tarea tarea = new Tarea("Pasear al perro", fechaLimite.getFecha(), Estado.INCOMPLETA, Prioridad.BAJA, fechaRecordatorio.getFecha());
+        LocalDate fechaLimite = FechaUtilidad.getFechaDesdeString("31-10-2022", FechaUtilidad.FORMATO1);
+        LocalDate fechaRecordatorio = FechaUtilidad.getFechaDesdeString("30-09-2021", FechaUtilidad.FORMATO1);
+        Tarea tarea = new Tarea("Pasear al perro", fechaLimite, Estado.INCOMPLETA, Prioridad.BAJA, fechaRecordatorio);
 
 
         System.out.println("Descripcion de mi tarea: " + tarea.mostrarTarea());
